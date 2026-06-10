@@ -7,9 +7,8 @@
 
 import { setOptions, importLibrary } from '@googlemaps/js-api-loader';
 
-const GOOGLE_MAPS_API_KEY =
-  process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY ??
-  'AIzaSyCPBg0ZUvvaCWE82009WrTztkOb0n438EM';
+const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY || '';
+
 
 let configured = false;
 let loadPromise: Promise<void> | null = null;
