@@ -1,0 +1,310 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   FletesPro — Uber-Inspired Minimalist Light Theme
+   Clean design system: monochrome accents, solid grey forms,
+   sharp borders, premium typography, high contrast.
+   ============================================================ */
+
+@theme inline {
+  /* Shadcn tokens mapping */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+  --font-heading: var(--font-sora);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+
+  /* Custom palette */
+  --color-uber-blue: #276EF1;
+  --color-success: #05944F;
+  --color-danger: #E11900;
+}
+
+/* Base Light Theme (Uber Style) */
+:root {
+  --background: #F8F9FA;
+  --foreground: #000000;
+  --card: #FFFFFF;
+  --card-foreground: #000000;
+  --popover: #FFFFFF;
+  --popover-foreground: #000000;
+  --primary: #000000;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F3F3F3;
+  --secondary-foreground: #333333;
+  --muted: #F3F3F3;
+  --muted-foreground: #5E5E5E;
+  --accent: #EEEEEE;
+  --accent-foreground: #000000;
+  --destructive: #E11900;
+  --border: #E2E2E2;
+  --input: #F3F3F3;
+  --ring: #000000;
+  --radius: 8px;
+  
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #000000;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F3F3F3;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #E2E2E2;
+  --sidebar-ring: #000000;
+}
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    background-image: none;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading), 'Sora', sans-serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ============================================================
+   Design System Utilities
+   ============================================================ */
+
+@layer utilities {
+  /* Cards */
+  .glass {
+    background: #FFFFFF;
+    border: 1px solid #E2E2E2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  }
+
+  .glass-heavy {
+    background: #FFFFFF;
+    border: 1px solid #E2E2E2;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  .glass-amber {
+    background: #FFFFFF;
+    border: 1px solid #E2E2E2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Price highlight border */
+  .amber-glow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    border: 1px solid #000000 !important;
+  }
+
+  /* Font Mono */
+  .font-data {
+    font-family: var(--font-mono), 'JetBrains Mono', 'Fira Code', monospace;
+    letter-spacing: -0.02em;
+  }
+
+  /* Textareas & Inputs (Estilo Uber: sin bordes molestos, gris claro por defecto, borde negro al focus) */
+  .input-field {
+    height: 3rem;
+    font-size: 0.925rem;
+    border-radius: var(--radius);
+    background: #F3F3F3;
+    border: 1px solid transparent;
+    color: #000000;
+    transition: background-color 0.15s, border-color 0.15s;
+    font-weight: 500;
+  }
+
+  .input-field:focus {
+    outline: none;
+    background: #FFFFFF;
+    border-color: #000000;
+    box-shadow: none;
+  }
+
+  .input-field::placeholder {
+    color: #8C8C8C;
+  }
+
+  /* Botón primario negro estilo Uber */
+  .btn-primary-xl {
+    min-height: 3.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    background: #000000;
+    color: #FFFFFF;
+    transition: background-color 0.15s, transform 0.1s;
+    border: none;
+  }
+
+  .btn-primary-xl:hover:not(:disabled) {
+    background: #1F1F1F;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .btn-primary-xl:active:not(:disabled) {
+    background: #333333;
+  }
+
+  .btn-primary-xl:disabled {
+    background: #E2E2E2;
+    color: #8C8C8C;
+    opacity: 1;
+    cursor: not-allowed;
+  }
+
+  /* Scrollbar light */
+  .scrollbar-dark::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-dark::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-dark::-webkit-scrollbar-thumb {
+    background: #E2E2E2;
+    border-radius: 3px;
+  }
+}
+
+/* ============================================================
+   Animaciones
+   ============================================================ */
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Shimmer loading skeleton */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #F3F3F3 25%,
+    #EEEEEE 50%,
+    #F3F3F3 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ============================================================
+   Google Autocomplete Dropdown Light Override
+   ============================================================ */
+.pac-container {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E2E2 !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.pac-item {
+  background: transparent !important;
+  border-top: 1px solid #EEEEEE !important;
+  color: #555555 !important;
+  cursor: pointer;
+  padding: 12px 16px !important;
+  font-family: var(--font-sans), Inter, sans-serif !important;
+  font-size: 0.875rem !important;
+  transition: background-color 0.15s;
+}
+
+.pac-item:hover,
+.pac-item-selected {
+  background: #F3F3F3 !important;
+  color: #000000 !important;
+}
+
+.pac-item-query {
+  color: #000000 !important;
+  font-size: 0.9rem !important;
+}
+
+.pac-icon {
+  display: none !important;
+}
+
+.pac-logo::after {
+  display: none !important;
+}
